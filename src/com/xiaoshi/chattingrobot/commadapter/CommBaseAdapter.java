@@ -7,11 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Toast;
 /***
  * 
  * @author xiaoshi email:emotiona_xiaoshi@126.com
- * @TODO 公用Adapter 
- * @2015年7月14日
+ * @TODO 公用适配器
+ * @2015年8月25日
  * @param <T>
  *
  */
@@ -30,6 +31,7 @@ public abstract class CommBaseAdapter<T> extends BaseAdapter {
 
 	public void setmLists(List<T> mLists) {
 		this.mLists = mLists;
+		this.notifyDataSetChanged();
 	}
 
 	@Override
@@ -53,19 +55,26 @@ public abstract class CommBaseAdapter<T> extends BaseAdapter {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		ViewHolder holder=ViewHolder.getHolder(position, mContext, 
-				convertView, parent, getLayoutId());
-		convert(holder, getItem(position));
+				convertView, parent, getLayoutId(position));
+		convert(holder, getItem(position),position);
 		return holder.getConvertView();
 	}
 	/***
-	 * 获取资源文件
+	 * 设置布局文件
 	 * @return
 	 */
-	public abstract int getLayoutId();
+	public abstract int getLayoutId(int postion);
 	/**
-	 * 抽象方法，用户实现控件的事件处理
+	 * 处理业务
 	 * @param holder
 	 * @param t
 	 */
-	public abstract void convert(ViewHolder holder,T t);
+	public abstract void convert(ViewHolder holder,T t,int position);
+	/***
+	 * 统一Toast
+	 * @param msg
+	 */
+	public void showToast(String msg){
+		Toast.makeText(mContext, msg+"", Toast.LENGTH_SHORT).show();
+	};
 }

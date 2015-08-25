@@ -139,6 +139,7 @@ public class HttpConnectUtils {
 //			Log.i("cookie", MyAppaction.sharePreferences.readString("cookie", ""));
 //
 //		}
+		Log.e("url", path);
 		List<NameValuePair> nvps = new ArrayList<NameValuePair>(paramMap.size());
 		if (paramMap != null) {
 			for (Map.Entry<String, String> entry : paramMap.entrySet()) {
@@ -159,6 +160,7 @@ public class HttpConnectUtils {
 //					getCookie(client);// 当操作是用户登录的时候记录Cookie
 //					MyAppaction.isLogin = true;
 //				}
+				Log.e("response",string);
 				return string;
 			} else if (response.getStatusLine().getStatusCode() == HttpStatus.SC_GATEWAY_TIMEOUT) {
 				return "请求超时";

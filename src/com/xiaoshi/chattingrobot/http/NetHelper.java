@@ -1,58 +1,88 @@
 package com.xiaoshi.chattingrobot.http;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Map;
 
-import android.os.AsyncTask;
-public class NetHelper implements INetHelper{
+import com.xiaoshi.chattingrobot.MyAppaction;
+import com.xiaoshi.chattingrobot.utils.InputStreamToString;
 
+import android.content.Context;
+import android.os.AsyncTask;
+
+public class NetHelper implements INetHelper {
 	@Override
-	public void getResult(final String url, final ICallBack callback) {
+	public void getResult(final String url, final ICallBack callback, boolean simulation, String simulation_name, Context context) {
 		// TODO Auto-generated method stub
-		new AsyncTask<Void, Void, String>() {
-			@Override
-			protected String doInBackground(Void... params) {
-				String response="";
-				try {
-					response = HttpConnectUtils.getClient(url);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				return response;
+		if (simulation) {
+			try {
+				InputStream open = context.getAssets().open(simulation_name);
+				String response = InputStreamToString.isToString(open);
+				callback.onSuccess(response);
+			} catch (IOException e) {
+				e.printStackTrace();
+				callback.onFailed(e.getMessage());
 			}
-			@Override
-			protected void onPostExecute(String response) {
-				if(response!=null){
-					callback.onSuccess(response);
-				}else{
-					callback.onFailed("链接服务器失败");
+		} else {
+			new AsyncTask<Void, Void, String>() {
+				@Override
+				protected String doInBackground(Void... params) {
+					String response = "";
+					try {
+						response = HttpConnectUtils.getClient(url);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					return response;
 				}
-			}
-		}.execute();
+
+				@Override
+				protected void onPostExecute(String response) {
+					if (response != null) {
+						callback.onSuccess(response);
+					} else {
+						callback.onFailed("链接服务器失败");
+					}
+				}
+			}.execute();
+		}
 	}
 
 	@Override
-	public void postResult(final String url,final Map<String,String> paramMap, final ICallBack callback) {
+	public void postResult(final String url, final Map<String, String> paramMap, final ICallBack callback, boolean simulation, String simulation_name,
+			Context context) {
 		// TODO Auto-generated method stub
-				new AsyncTask<Void, Void, String>() {
-					
-					@Override
-					protected String doInBackground(Void... params) {
-						String response="";
-						try {
-							response = HttpConnectUtils.postClient(url, paramMap);
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-						return response;
+		if (simulation) {
+			try {
+				InputStream open = context.getAssets().open(simulation_name);
+				String response = InputStreamToString.isToString(open);
+				callback.onSuccess(response);
+			} catch (IOException e) {
+				e.printStackTrace();
+				callback.onFailed(e.getMessage());
+			}
+		} else {
+			new AsyncTask<Void, Void, String>() {
+				@Override
+				protected String doInBackground(Void... params) {
+					String response = "";
+					try {
+						response = HttpConnectUtils.postClient(url, paramMap);
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
-					@Override
-					protected void onPostExecute(String response) {
-						if(response!=null){
-							callback.onSuccess(response);
-						}else{
-							callback.onFailed("链接服务器失败");
-						}
+					return response;
+				}
+
+				@Override
+				protected void onPostExecute(String response) {
+					if (response != null) {
+						callback.onSuccess(response);
+					} else {
+						callback.onFailed("链接服务器失败");
 					}
-				}.execute();
+				}
+			}.execute();
+		}
 	}
 }
