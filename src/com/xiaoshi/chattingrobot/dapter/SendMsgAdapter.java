@@ -14,7 +14,6 @@ import com.xiaoshi.chattingrobot.R;
 import com.xiaoshi.chattingrobot.bean.ChatMessage;
 import com.xiaoshi.chattingrobot.bean.ChatMessage.ReturnType;
 import com.xiaoshi.chattingrobot.bean.ChatMessage.Type;
-import com.xiaoshi.chattingrobot.bean.Flight;
 import com.xiaoshi.chattingrobot.bean.Menu;
 import com.xiaoshi.chattingrobot.bean.News;
 import com.xiaoshi.chattingrobot.bean.Train;
@@ -29,6 +28,7 @@ import com.xiaoshi.chattingrobot.utils.Utils;
  * @2015年7月17日
  *
  */
+@SuppressWarnings("rawtypes")
 public class SendMsgAdapter extends CommBaseAdapter<ChatMessage> {
 
 	public SendMsgAdapter(Context context) {

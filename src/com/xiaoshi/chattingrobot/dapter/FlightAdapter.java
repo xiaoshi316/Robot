@@ -7,11 +7,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.ImageScaleType;
-import com.nostra13.universalimageloader.core.display.SimpleBitmapDisplayer;
-import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
+import com.squareup.picasso.Picasso;
 import com.xiaoshi.chattingrobot.R;
 import com.xiaoshi.chattingrobot.bean.Flight;
 import com.xiaoshi.chattingrobot.commadapter.CommBaseAdapter;
@@ -40,7 +36,7 @@ public class FlightAdapter extends CommBaseAdapter<Flight> {
 		TextView tv_start_end_time = holder.getView(R.id.tv_start_end_time);
 		tv_trainnum.setText(" ");
 		tv_start_end.setText(t.getFlight());
-		tv_start_end_time.setText(t.getStarttime()+t.getEndtime());
+		tv_start_end_time.setText(t.getStarttime() + t.getEndtime());
 	}
 
 	/**
@@ -50,24 +46,12 @@ public class FlightAdapter extends CommBaseAdapter<Flight> {
 	 * @param url
 	 */
 	public void setImageUrl(final ImageView iv, final String url) {
-		DisplayImageOptions options = new DisplayImageOptions.Builder().showImageOnLoading(R.drawable.normal) // resource
-				.showImageForEmptyUri(R.drawable.normal) // resource or
-				.showImageOnFail(R.drawable.normal) // resource or
-				.resetViewBeforeLoading(false) // default
-				.delayBeforeLoading(1000).cacheInMemory(false) // default
-				.cacheOnDisk(false) // default
-				.considerExifParams(false) // default
-				.imageScaleType(ImageScaleType.IN_SAMPLE_POWER_OF_2) // default
-				.bitmapConfig(Bitmap.Config.RGB_565) // default
-				.displayer(new SimpleBitmapDisplayer()) // default
-				.handler(new Handler()) // default
-				.build();
-		ImageLoader.getInstance().loadImage("http://img3.cache.netease.com/3g/2015/8/4/20150804134737557fa.jpg", options, new SimpleImageLoadingListener() {
-			@Override
-			public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
-				super.onLoadingComplete(imageUri, view, loadedImage);
-				iv.setImageBitmap(loadedImage);
-			}
-		});
-	}
+		Picasso.with(mContext).load(url).into(iv);
+		//图像处理
+//		Picasso.with(context)
+//		  .load(url)
+//		  .resize(50, 50)//
+//		  .centerCrop()
+//		  .into(imageView)
+	};
 }

@@ -27,6 +27,7 @@ import com.xiaoshi.chattingrobot.bean.Menu;
 import com.xiaoshi.chattingrobot.bean.News;
 import com.xiaoshi.chattingrobot.bean.Train;
 import com.xiaoshi.chattingrobot.dapter.SendMsgAdapter;
+import com.xiaoshi.chattingrobot.exception.NotKeyExpection;
 import com.xiaoshi.chattingrobot.fastjson.Helper;
 import com.xiaoshi.chattingrobot.fastjson.JsonResultUtils;
 import com.xiaoshi.chattingrobot.fastjson.JsonUtils;
@@ -96,58 +97,62 @@ public class MainActivity extends BaseActivity {
 			public void onSuccess(String response) {
 				// {"code":100000,"text":"这对于纯洁的我来说实在是 捂脸"} response
 				Helper jsonhelper = JsonResultUtils.helper(response);
-				if (jsonhelper.getCode().equals("100000")) {
-					String content = jsonhelper.getText();
-					ChatMessage chatMessage = new ChatMessage();
-					chatMessage.setDate(new Date());
-					chatMessage.setMsg(content);
-					chatMessage.setType(Type.OUTPUT);
-					chatMessage.setReturnType(ReturnType.TEXT);
-					lists.add(chatMessage);
-				} else if (jsonhelper.getCode().equals("200000")) {
-					String url = jsonhelper.getUrl();
-					ChatMessage chatMessage = new ChatMessage();
-					chatMessage.setDate(new Date());
-					chatMessage.setMsg(url);
-					chatMessage.setType(Type.OUTPUT);
-					chatMessage.setReturnType(ReturnType.LINK);
-					lists.add(chatMessage);
-				} else if (jsonhelper.getCode().equals("302000")) {
-					String list = jsonhelper.getList();
-					List<News> mlists = JsonUtils.getObjects(list, News.class);
-					ChatMessage<News> chatMessage = new ChatMessage<News>();
-					chatMessage.setDate(new Date());
-					chatMessage.setType(Type.OUTPUT);
-					chatMessage.setListdata(mlists);
-					chatMessage.setReturnType(ReturnType.NEWS);
-					lists.add(chatMessage);
-				} else if (jsonhelper.getCode().equals("305000")) {
-					String list = jsonhelper.getList();
-					List<Train> mlists = JsonUtils.getObjects(list, Train.class);
-					ChatMessage<Train> chatMessage = new ChatMessage<Train>();
-					chatMessage.setDate(new Date());
-					chatMessage.setType(Type.OUTPUT);
-					chatMessage.setListdata(mlists);
-					chatMessage.setReturnType(ReturnType.TRAIN);
-					lists.add(chatMessage);
-				} else if (jsonhelper.getCode().equals("306000")) {
-					String list = jsonhelper.getList();
-					List<Flight> mlists = JsonUtils.getObjects(list, Flight.class);
-					ChatMessage<Flight> chatMessage = new ChatMessage<Flight>();
-					chatMessage.setDate(new Date());
-					chatMessage.setType(Type.OUTPUT);
-					chatMessage.setListdata(mlists);
-					chatMessage.setReturnType(ReturnType.FLIGHT);
-					lists.add(chatMessage);
-				} else if (jsonhelper.getCode().equals("308000")) {
-					String list = jsonhelper.getList();
-					List<Menu> mlists = JsonUtils.getObjects(list, Menu.class);
-					ChatMessage<Menu> chatMessage = new ChatMessage<Menu>();
-					chatMessage.setDate(new Date());
-					chatMessage.setType(Type.OUTPUT);
-					chatMessage.setListdata(mlists);
-					chatMessage.setReturnType(ReturnType.MENU);
-					lists.add(chatMessage);
+				try {
+					if (jsonhelper.getCode().equals("100000")) {
+						String content = jsonhelper.getText();
+						ChatMessage chatMessage = new ChatMessage();
+						chatMessage.setDate(new Date());
+						chatMessage.setMsg(content);
+						chatMessage.setType(Type.OUTPUT);
+						chatMessage.setReturnType(ReturnType.TEXT);
+						lists.add(chatMessage);
+					} else if (jsonhelper.getCode().equals("200000")) {
+						String url = jsonhelper.getUrl();
+						ChatMessage chatMessage = new ChatMessage();
+						chatMessage.setDate(new Date());
+						chatMessage.setMsg(url);
+						chatMessage.setType(Type.OUTPUT);
+						chatMessage.setReturnType(ReturnType.LINK);
+						lists.add(chatMessage);
+					} else if (jsonhelper.getCode().equals("302000")) {
+						String list = jsonhelper.getList();
+						List<News> mlists = JsonUtils.getObjects(list, News.class);
+						ChatMessage<News> chatMessage = new ChatMessage<News>();
+						chatMessage.setDate(new Date());
+						chatMessage.setType(Type.OUTPUT);
+						chatMessage.setListdata(mlists);
+						chatMessage.setReturnType(ReturnType.NEWS);
+						lists.add(chatMessage);
+					} else if (jsonhelper.getCode().equals("305000")) {
+						String list = jsonhelper.getList();
+						List<Train> mlists = JsonUtils.getObjects(list, Train.class);
+						ChatMessage<Train> chatMessage = new ChatMessage<Train>();
+						chatMessage.setDate(new Date());
+						chatMessage.setType(Type.OUTPUT);
+						chatMessage.setListdata(mlists);
+						chatMessage.setReturnType(ReturnType.TRAIN);
+						lists.add(chatMessage);
+					} else if (jsonhelper.getCode().equals("306000")) {
+						String list = jsonhelper.getList();
+						List<Flight> mlists = JsonUtils.getObjects(list, Flight.class);
+						ChatMessage<Flight> chatMessage = new ChatMessage<Flight>();
+						chatMessage.setDate(new Date());
+						chatMessage.setType(Type.OUTPUT);
+						chatMessage.setListdata(mlists);
+						chatMessage.setReturnType(ReturnType.FLIGHT);
+						lists.add(chatMessage);
+					} else if (jsonhelper.getCode().equals("308000")) {
+						String list = jsonhelper.getList();
+						List<Menu> mlists = JsonUtils.getObjects(list, Menu.class);
+						ChatMessage<Menu> chatMessage = new ChatMessage<Menu>();
+						chatMessage.setDate(new Date());
+						chatMessage.setType(Type.OUTPUT);
+						chatMessage.setListdata(mlists);
+						chatMessage.setReturnType(ReturnType.MENU);
+						lists.add(chatMessage);
+					}
+				} catch (NotKeyExpection e) {
+					e.printStackTrace();
 				}
 				adapter.setmLists(lists);
 				adapter.notifyDataSetChanged();

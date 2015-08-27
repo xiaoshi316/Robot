@@ -2,6 +2,7 @@ package com.xiaoshi.chattingrobot.fastjson;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.xiaoshi.chattingrobot.exception.NotKeyExpection;
 
 public class JsonResultHelper implements Helper {
 
@@ -20,12 +21,12 @@ public class JsonResultHelper implements Helper {
 	}
 
 
-	public String getContentByKey(String key) {
+	public String getContentByKey(String key) throws NotKeyExpection {
 		if (objects.containsKey(key)) {
 			String result = String.valueOf(objects.get(key));
 			return result;
 		} else {
-			return "没有" + key;
+			throw new NotKeyExpection("没有"+key);
 		}
 	}
 
@@ -35,46 +36,43 @@ public class JsonResultHelper implements Helper {
 	}
 
 	@Override
-	public String getCode() {
+	public String getCode() throws NotKeyExpection{
 		// TODO Auto-generated method stub
 		if (objects.containsKey("code")) {
 			String result = String.valueOf(objects.get("code"));
 			return result;
 		} else {
-			return "code is null";
+			throw new NotKeyExpection("server's code is null");
 		}
 	}
 
 	@Override
-	public String getText() {
+	public String getText() throws NotKeyExpection{
 		if (objects.containsKey("text")) {
 			String result = String.valueOf(objects.get("text"));
 			return result;
 		} else {
-			return "text is null";
+			throw new NotKeyExpection("server's text is null");
 		}
 	}
 
 	@Override
-	public String getUrl() {
+	public String getUrl() throws NotKeyExpection{
 		if (objects.containsKey("url")) {
 			String result = String.valueOf(objects.get("url"));
 			return result;
 		} else {
-			return "url is null";
+			throw new NotKeyExpection("server's url is null");
 		}
 	}
 
 	@Override
-	public String getList() {
+	public String getList() throws NotKeyExpection{
 		if (objects.containsKey("list")) {
 			String result = String.valueOf(objects.get("list"));
 			return result;
 		} else {
-			return "list is null";
+			throw new NotKeyExpection("server's list is null");
 		}
 	}
-
-
-
 }

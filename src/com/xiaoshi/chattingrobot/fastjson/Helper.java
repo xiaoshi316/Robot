@@ -1,5 +1,7 @@
 package com.xiaoshi.chattingrobot.fastjson;
 
+import com.xiaoshi.chattingrobot.exception.NotKeyExpection;
+
 /***
  * 
  * @author xiaoshi email:emotiona_xiaoshi@126.com
@@ -8,10 +10,10 @@ package com.xiaoshi.chattingrobot.fastjson;
  *
  */
 public interface Helper {
-	String getCode();
-	String getText();
-	String getUrl();
-	String getList();
-	String getContentByKey(String key);
+	String getCode()throws NotKeyExpection;
+	String getText()throws NotKeyExpection;
+	String getUrl()throws NotKeyExpection;
+	String getList()throws NotKeyExpection;
+	String getContentByKey(String key) throws NotKeyExpection;
 	void put(String key,String value);
 }
