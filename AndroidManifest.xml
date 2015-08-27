@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.xiaoshi.chattingrobot"
+    package="com.emotiona.android"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -15,7 +15,7 @@
     </uses-permission>
 
     <application
-        android:name="com.xiaoshi.chattingrobot.MyAppaction"
+        android:name="com.emotiona.android.MyAppaction"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -23,7 +23,7 @@
         <uses-library android:name="android.test.runner" />
 
         <activity
-            android:name=".MainActivity"
+            android:name="com.emotiona.android.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,14 +32,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".TestWebViewActivity"
+            android:name="com.emotiona.android.TestWebViewActivity"
             android:label="@string/title_activity_test_web_view" >
         </activity>
         <activity
-            android:name=".ContentDetailActivity"
+            android:name="com.emotiona.android.ContentDetailActivity"
             android:label="@string/title_activity_content_detail" >
         </activity>
-        <activity android:name=".OpeanSDHtml" >
+        <activity android:name="com.emotiona.android.OpeanSDHtml" >
         </activity>
     </application>
 
