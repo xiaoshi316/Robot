@@ -50,7 +50,7 @@ public abstract class BaseActivity extends FragmentActivity {
 		// WindowManager.LayoutParams.FLAG_FULLSCREEN);// 设置全屏
 		super.onCreate(savedInstanceState);
 		setContentView(initPageLayoutID());// 设置
-		Log.e("TAG", this.getClass().getName());//打印出每个activity的类名
+		Log.e("RUNNING-ACTIVITY", this.getClass().getName());//打印出每个activity的类名
 		sharedpreferences = MyPreferenceManager.getInstance(this);
 		initPageView();// 添加布局
 		initPageViewListener();// 添加监听

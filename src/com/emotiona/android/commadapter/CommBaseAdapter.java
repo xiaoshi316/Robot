@@ -192,7 +192,7 @@ public abstract class CommBaseAdapter<T> extends BaseAdapter {
 	 * 
 	 * 
 	 * @2015年8月26日下午3:31:41
-	 * @TODO Clear mLists list
+	 * @TODO 清空集合
 	 * @author emotiona
 	 * @Email emotiona_xiaoshi@126.com
 	 */

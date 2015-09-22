@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.Map;
 
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
@@ -33,6 +36,7 @@ import com.emotiona.android.fastjson.JsonResultUtils;
 import com.emotiona.android.fastjson.JsonUtils;
 import com.emotiona.android.http.ICallBack;
 import com.emotiona.android.http.NetHelper;
+import com.emotiona.android.logutils.LogUtils;
 
 public class MainActivity extends BaseActivity {
 	private Button btn_chat_send;
@@ -175,6 +179,18 @@ public class MainActivity extends BaseActivity {
 	@Override
 	protected void process(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
+		//获取appaction下面的meta_name节点
+		 ApplicationInfo appInfo;
+		try {
+			appInfo = this.getPackageManager()
+			            .getApplicationInfo(getPackageName(),PackageManager.GET_META_DATA);
+			String meta_name=appInfo.metaData.getString("meta_name");
+			LogUtils.e(meta_name);
+		} catch (NameNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 	/***

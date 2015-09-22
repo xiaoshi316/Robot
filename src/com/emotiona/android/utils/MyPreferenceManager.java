@@ -13,7 +13,7 @@ import android.content.SharedPreferences.Editor;
  * 
  * 在Android系统中，这些信息以XML文件的形式保存在 /data/data/PACKAGE_NAME /shared_prefs 目录下
  * 
- * @author nieshun
+ * @author 
  *
  */
 public class MyPreferenceManager {

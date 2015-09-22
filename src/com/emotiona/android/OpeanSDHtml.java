@@ -11,7 +11,16 @@ import android.webkit.WebView;
 import android.widget.Button;
 import com.emotiona.android.R;
 import com.emotiona.android.zipfile.ZipCopyUtil;
-
+/***
+ * 
+ * ClassName: OpeanSDHtml 
+ * Function: TODO 打开SD卡下的Html文件
+ * Reason: TODO 有些地方需要做模块的更新
+ * date: 2015年9月6日 下午1:16:07
+ * @author emotiona
+ * @version 
+ * @since JDK 1.7
+ */
 public class OpeanSDHtml extends Activity implements OnClickListener {
 	private Button btn_zip, btn_show;
 	private WebView wv_test;

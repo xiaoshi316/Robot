@@ -58,11 +58,21 @@ public class Utils {
 	}
 
 	/**
-	 * 字符串判空,true 为不是空字符串，false 为空字符串
+	 * 
 	 * 
 	 * @param str
 	 *            需要判空的字符串
 	 * @return boolean 是否为空字符串
+	 */
+	/***
+	 * 
+	 * isNull:(字符串判空,true 为不是空字符串，false 为空字符串)<br/>
+	 * TODO 字符串判空,true 为不是空字符串，false 为空字符串
+	 * @author emotiona<br/>
+	 * @Email emtiona_xiaoshi@126.com 	
+	 * @param str
+	 * @return
+	 * @since JDK 1.7
 	 */
 	public static boolean isNull(String str) {
 		if (str != null && !"".equals(str.trim()) && !"".equals(str) && !"null".equals(str)) {

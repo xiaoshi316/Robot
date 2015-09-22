@@ -41,12 +41,17 @@
         </activity>
         <activity android:name="com.emotiona.android.OpeanSDHtml" >
         </activity>
+        <meta-data
+            android:name="meta_name"
+            android:value="test_meta_data"
+            ></meta-data>
+        
     </application>
-
+	
     <instrumentation
         android:name="android.test.InstrumentationTestRunner"
         android:label="测试环境"
-        android:targetPackage="com.xiaoshi.chattingrobot" >
+        android:targetPackage="com.emotiona.android" >
     </instrumentation>
 
 </manifest>

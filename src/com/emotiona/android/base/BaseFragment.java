@@ -77,7 +77,7 @@ public abstract class BaseFragment extends Fragment {
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		baseMainView = inflater.inflate(R.layout.fragment_base, container, false);
-		Log.e("TAG", tag);
+		Log.e("RUNNING-FRAGMENT", tag);
 		findBaseViewById();
 		/** 初始化页面控件。 */
 		initPageView();

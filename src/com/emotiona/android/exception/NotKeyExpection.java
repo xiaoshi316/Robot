@@ -2,12 +2,16 @@ package com.emotiona.android.exception;
 
 import com.emotiona.android.logutils.LogUtils;
 
-/***
+
+/**
  * 
- * @author xiaoshi email:emotiona_xiaoshi@126.com
- * @TODO 处理服务器返回JSON数据没有key的情况
- * @2015年8月26日
- *
+ * ClassName: NotKeyExpection 
+ * Function: TODO 处理服务器返回JSON数据没有key的情况
+ * Reason: TODO ADD REASON(可选)
+ * date: 2015年8月27日 下午3:44:45
+ * @author emotiona
+ * @version 
+ * @since JDK 1.7
  */
 public class NotKeyExpection extends Exception {
 
