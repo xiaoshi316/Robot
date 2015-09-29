@@ -11,10 +11,13 @@ import java.util.zip.ZipOutputStream;
  
 /***
  * 
- * @author xiaoshi email:emotiona_xiaoshi@126.com
- * @TODO 文件处理工具 
- * @2015年8月24日
- *
+ * ClassName: ZipUtils 
+ * Function: TODO 文件处理工具
+ * Reason: TODO ADD REASON(可选)
+ * date: 2015年9月22日 下午5:53:41
+ * @author emotiona
+ * @version 
+ * @since JDK 1.7
  */
 public class ZipUtils {
     private static final int BUFF_SIZE = 1024 * 1024; // 1M Byte

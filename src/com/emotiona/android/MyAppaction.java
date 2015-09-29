@@ -1,15 +1,21 @@
 package com.emotiona.android;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import com.emotiona.android.cache.ACache;
+import com.emotiona.android.utils.MyPreferenceManager;
 
 import android.app.Application;
 import android.content.Context;
 
-import com.emotiona.android.cache.ACache;
-import com.emotiona.android.utils.MyPreferenceManager;
-
+/***
+ * 
+ * ClassName: MyAppaction 
+ * Function: TODO ADD FUNCTION
+ * Reason: TODO ADD REASON(可选)
+ * date: 2015年9月22日 下午5:31:00
+ * @author emotiona
+ * @version 
+ * @since JDK 1.7
+ */
 public class MyAppaction extends Application {
 	public static boolean isLogin = true;
 	public static MyPreferenceManager sharePreferences;

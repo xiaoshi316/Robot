@@ -26,7 +26,7 @@ public class JsonResultHelper implements Helper {
 			String result = String.valueOf(objects.get(key));
 			return result;
 		} else {
-			throw new NotKeyExpection("没有"+key);
+			throw new NotKeyExpection("server not"+key);
 		}
 	}
 

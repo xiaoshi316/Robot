@@ -11,10 +11,13 @@ import java.util.zip.ZipFile;
 
 /***
  * 
- * @author xiaoshi email:emotiona_xiaoshi@126.com
- * @TODO
- * @2015年7月29日
- *
+ * ClassName: ZipCopyUtil 
+ * Function: TODO copy file to SD
+ * Reason: TODO ADD REASON(可选)
+ * date: 2015年9月22日 下午5:52:51
+ * @author emotiona
+ * @version 
+ * @since JDK 1.7
  */
 public class ZipCopyUtil {
 
